@@ -68,6 +68,9 @@
     [self.inputView.sendButton addTarget:self action:@selector(sendPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.inputView];
     
+    UITapGestureRecognizer *tableTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTableViewTap:)];
+    [self.tableView addGestureRecognizer:tableTap];
+
     // Swipe guesture for pull to hide keyboard
     // Too buggy, needs work
     //UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
@@ -138,6 +141,11 @@
 }
 
 - (void)handleSwipe:(UIGestureRecognizer *)guestureRecognizer
+{
+    [self.inputView.textView resignFirstResponder];
+}
+
+- (void)handleTableViewTap:(UITapGestureRecognizer *)tapGestureRecognizer
 {
     [self.inputView.textView resignFirstResponder];
 }

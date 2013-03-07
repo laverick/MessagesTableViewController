@@ -47,6 +47,8 @@
 - (void)sendPressed:(UIButton *)sender withText:(NSString *)text;
 - (void)sendPressed:(UIButton *)sender;
 - (void)handleSwipe:(UIGestureRecognizer *)guestureRecognizer;
+- (void)handleTableViewTap:(UITapGestureRecognizer *)tapGestureRecognizer;
+
 
 #pragma mark - Messages view controller
 - (BubbleMessageStyle)messageStyleForRowAtIndexPath:(NSIndexPath *)indexPath;
