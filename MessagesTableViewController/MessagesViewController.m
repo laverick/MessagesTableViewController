@@ -147,6 +147,7 @@
 
 - (void)handleTableViewTap:(UITapGestureRecognizer *)tapGestureRecognizer
 {
+    [self finishedEditing];
     [self.inputView.textView resignFirstResponder];
 }
 
@@ -174,7 +175,14 @@
     }
     
     cell.bubbleView.text = [self textForRowAtIndexPath:indexPath];
-    cell.backgroundColor = tableView.backgroundColor;
+    cell.senderLabel.text = [self senderForRowAtIndexPath:indexPath];
+    cell.senderLabel.textAlignment = (cell.bubbleView.style == BubbleMessageStyleOutgoing) ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    cell.senderLabel.frame = CGRectMake(0.0f,
+                                        [BubbleView cellHeightForText:cell.bubbleView.text],
+                                        cell.senderLabel.frame.size.width,
+                                        cell.senderLabel.frame.size.height);
+    
+//    cell.backgroundColor = tableView.backgroundColor;
     
     return cell;
 }
@@ -196,7 +204,7 @@
     return nil; // Override in subclass
 }
 
-- (void)finishSend
+- (void)finishedEditing
 {
     [self.inputView.textView setText:nil];
     [self textViewDidChange:self.inputView.textView];
@@ -232,6 +240,7 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
+    [self finishedEditing];
     [textView resignFirstResponder];
 }
 

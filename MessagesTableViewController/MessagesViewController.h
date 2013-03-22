@@ -52,9 +52,12 @@
 #pragma mark - Messages view controller
 - (BubbleMessageStyle)messageStyleForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)textForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)finishSend;
+- (void)finishedEditing;
 - (void)setBackgroundColor:(UIColor *)color;
 - (void)scrollToBottomAnimated:(BOOL)animated;
+
+// add Sender
+- (NSString *)senderForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 #pragma mark - Keyboard notifications
 - (void)handleWillShowKeyboard:(NSNotification *)notification;

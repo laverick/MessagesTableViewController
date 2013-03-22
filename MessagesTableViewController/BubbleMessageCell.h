@@ -34,9 +34,12 @@
 #import <UIKit/UIKit.h>
 #import "BubbleView.h"
 
+#define kMessageSenderHeight 12.0f
+
 @interface BubbleMessageCell : UITableViewCell
 
 @property (strong, nonatomic) BubbleView *bubbleView;
+@property (strong, nonatomic) UILabel *senderLabel;
 
 - (id)initWithBubbleStyle:(BubbleMessageStyle)style
           reuseIdentifier:(NSString *)reuseIdentifier;

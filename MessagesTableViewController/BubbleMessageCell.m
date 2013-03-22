@@ -46,6 +46,9 @@
 #pragma mark - Initialization
 - (void)setup
 {
+    self.clipsToBounds = YES;
+    
+    
     self.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.accessoryType = UITableViewCellAccessoryNone;
@@ -67,6 +70,23 @@
     
     [self.contentView addSubview:self.bubbleView];
     [self.contentView sendSubviewToBack:self.bubbleView];
+    
+
+    self.senderLabel.backgroundColor = [UIColor redColor];
+    self.senderLabel.textColor = [UIColor yellowColor];
+
+    self.senderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f,
+                                                                 self.bubbleView.frame.size.height - 6.0f,
+                                                                 self.contentView.frame.size.width,
+                                                                 kMessageSenderHeight)];
+    
+    self.senderLabel.font = [UIFont boldSystemFontOfSize:kMessageSenderHeight];
+
+        
+//    self.senderLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    [self.contentView addSubview:self.senderLabel];
+//    [self.contentView sendSubviewToBack:self.senderLabel];
 }
 
 - (id)initWithBubbleStyle:(BubbleMessageStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -102,6 +122,7 @@
 {
     [super setBackgroundColor:backgroundColor];
     [self.bubbleView setBackgroundColor:backgroundColor];
+    [self.senderLabel setBackgroundColor:backgroundColor];
 }
 
 @end
