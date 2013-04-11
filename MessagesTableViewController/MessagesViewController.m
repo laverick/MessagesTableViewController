@@ -194,6 +194,12 @@
 }
 
 #pragma mark - Messages view controller
+
+- (NSString *)senderForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSAssert(NO, @"expecting subclassing?");
+    return nil;
+}
+
 - (BubbleMessageStyle)messageStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 0; // Override in subclass
